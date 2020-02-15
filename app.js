@@ -1,5 +1,15 @@
 let library = []
 
+
+function submitbook(book) {
+  
+let formAuthor = document.getElementById("author").value
+let formTitle = document.getElementById("title").value
+let formPages = document.getElementById("pages").value
+let newBook = new createBook (formAuthor, formTitle, formPages)
+library.push(newBook)
+}
+
 class createBook {
     constructor(author, title, pages) {
         this._author = author;
@@ -25,22 +35,8 @@ class createBook {
         togglereadStatus() {
         this.readStatus = !this.readStatus
         }
-     
-        
+            
 }
-
-let newBook = new createBook ('Man', 'made', '575') 
-let newBook2 = new createBook ('Kappa', "Kappa2", "697")
-let newBook3 = new createBook ('Krappa', "Krappa2", "652")
-function addBookToLibrary1() {
-    library.push(newBook)
-    library.push(newBook2)
-    library.push(newBook3)
-    
-  }
-  addBookToLibrary1()
-console.log(library)
-
 
 function addBookToLibrary(book) {
 for (i=0; i<library.length;i++)
@@ -48,13 +44,11 @@ for (i=0; i<library.length;i++)
 
  let bookinfo = document.createElement("div")
  bookinfo.classList.add('book-overview')
- bookinfo.textContent =library[i].author + " " + library[i].title + " " + library[i].pages
+ bookinfo.textContent =library[i].author + " " + library[i].title + " " + library[i].pages + " " + library[i].readStatus
  document.getElementById("bookcontainer").appendChild(bookinfo)
- 
+ library=[]
+ }
 }
-}
-console.log(library.length)
-addBookToLibrary()
 
 
 
